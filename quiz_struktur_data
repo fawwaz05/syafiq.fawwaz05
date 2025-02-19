@@ -1,0 +1,51 @@
+// M Syafiw Fawwaz
+#include <iostream>
+#include <iomanip>  // Untuk mengatur format tampilan tabel
+using namespace std;
+
+// Struct untuk menyimpan data mahasiswa
+struct Mahasiswa {
+    int nim;
+    string nama;
+    float ipk;
+};
+
+int main() {
+    int jumlah;
+
+    // Meminta jumlah mahasiswa yang akan dimasukkan
+    cout << "Masukkan jumlah mahasiswa: ";
+    cin >> jumlah;
+
+    // Membuat array struct Mahasiswa sesuai jumlah input
+    Mahasiswa mhs[jumlah];
+
+    // Input data mahasiswa
+    for (int i = 0; i < jumlah; i++) {
+        cout << "\nMasukkan data mahasiswa ke-" << i + 1 << endl;
+        cout << "NIM  : ";
+        cin >> mhs[i].nim;
+        cin.ignore(); // Menghindari bug pada input string
+        cout << "Nama : ";
+        getline(cin, mhs[i].nama);
+        cout << "IPK  : ";
+        cin >> mhs[i].ipk;
+    }
+
+    // Menampilkan data mahasiswa dalam format tabel rapi
+    cout << "\nDaftar Mahasiswa:\n";
+    cout << "---------------------------------------------------\n";
+    cout << "| No |     NIM     |      Nama      |   IPK   |\n";
+    cout << "---------------------------------------------------\n";
+
+    for (int i = 0; i < jumlah; i++) {
+        cout << "| " << setw(2) << i + 1 << " | " 
+             << setw(10) << mhs[i].nim << " | " 
+             << setw(14) << mhs[i].nama << " | " 
+             << fixed << setprecision(2) << setw(6) << mhs[i].ipk << " |\n";
+    }
+
+    cout << "---------------------------------------------------\n";
+
+    return 0;
+}
